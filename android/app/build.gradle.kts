@@ -18,7 +18,7 @@ android {
     // شناسه رسمی برند شما
     namespace = "com.safipay.app"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = "26.1.10909125" // نسخه پایدار برای جلوگیری از خطای NDK
+    ndkVersion = "25.2.9519653" // نسخه پایدار برای جلوگیری از خطای NDK
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
