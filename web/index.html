@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <base href="/">
+  <base href="./">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
@@ -18,9 +18,9 @@
   <link rel="manifest" href="manifest.json">
 
   <style>
-    /* استایل ساده برای زمان بارگذاری */
+    /* استایل اختصاصی لودر طلایی در پس‌زمینه مشکی */
     body {
-      background-color: #000000; /* رنگ مشکی برند صافی */
+      background-color: #000000;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -28,8 +28,8 @@
       margin: 0;
     }
     .loader {
-      border: 5px solid #f3f3f3;
-      border-top: 5px solid #D4AF37; /* رنگ طلایی برند صافی */
+      border: 5px solid #333;
+      border-top: 5px solid #D4AF37; /* طلایی برند */
       border-radius: 50%;
       width: 50px;
       height: 50px;
@@ -48,7 +48,7 @@
 
   <script>
     window.addEventListener('load', function(ev) {
-      // حذف لودر بعد از بارگذاری کامل اپلیکیشن
+      // حذف لودر پس از لود شدن کامل وب‌اپلیکیشن
       var loader = document.getElementById('loading-indicator');
       if (loader) {
         loader.remove();
