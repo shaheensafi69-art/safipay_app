@@ -52,16 +52,15 @@ android {
     }
 
     buildTypes {
-        release {
-            // فعال کردن امضای رسمی SafiPay
-            signingConfig = signingConfigs.getByName("release")
-            
-            // بهینه‌سازی کد (اگر اپلیکیشن کرش کرد، این دو را false کن)
-            isMinifyEnabled = false 
-            isShrinkResources = false
-            
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-        }
+    release {
+        // فعال کردن امضای رسمی
+        signingConfig = signingConfigs.getByName("release")
+
+        // این دو خط را حتماً false بگذار تا مشکل کرش حل شود
+        isMinifyEnabled = false 
+        isShrinkResources = false
+        
+        proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
     }
 }
 
