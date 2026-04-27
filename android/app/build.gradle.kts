@@ -7,7 +7,6 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
-// خواندن اطلاعات شناسنامه رسمی SafiPay
 val keystoreProperties = Properties()
 val keystorePropertiesFile = rootProject.file("key.properties")
 if (keystorePropertiesFile.exists()) {
@@ -15,11 +14,10 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    // شناسه رسمی برند شما
     namespace = "com.safipay.app"
     compileSdk = flutter.compileSdkVersion
     
-    // اصلاح شده: استفاده از بالاترین نسخه مورد نیاز پلاگین‌ها برای جلوگیری از کرش
+    // استفاده از نسخه NDK مورد نیاز پلاگین‌های جدید
     ndkVersion = "28.2.13676358" 
 
     compileOptions {
@@ -28,17 +26,17 @@ android {
     }
 
     kotlinOptions {
+        // روش جدید تعریف jvmTarget برای جلوگیری از خطای Deprecated
         jvmTarget = "17"
     }
 
     defaultConfig {
         applicationId = "com.safipay.app"
-        minSdk = flutter.minSdkVersion // حداقل نسخه برای پشتیبانی بهتر از پلاگین‌ها
+        minSdk = 21 // تغییر به 21 برای پشتیبانی بهتر از کتابخانه‌های جدید
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
         
-        // اضافه کردن برای پایداری در رندرینگ
         multiDexEnabled = true
     }
 
@@ -52,15 +50,15 @@ android {
     }
 
     buildTypes {
-    release {
-        // فعال کردن امضای رسمی
-        signingConfig = signingConfigs.getByName("release")
+        getByName("release") {
+            signingConfig = signingConfigs.getByName("release")
 
-        // این دو خط را حتماً false بگذار تا مشکل کرش حل شود
-        isMinifyEnabled = false 
-        isShrinkResources = false
-        
-        proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            // غیرفعال کردن برای حل مشکل کرش (Force Close) بعد از نصب
+            isMinifyEnabled = false 
+            isShrinkResources = false
+            
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
     }
 }
 
