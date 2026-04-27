@@ -7,7 +7,7 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
-// خواندن اطلاعات شناسنامه جدید SafiPay
+// خواندن اطلاعات شناسنامه رسمی SafiPay
 val keystoreProperties = Properties()
 val keystorePropertiesFile = rootProject.file("key.properties")
 if (keystorePropertiesFile.exists()) {
@@ -18,7 +18,9 @@ android {
     // شناسه رسمی برند شما
     namespace = "com.safipay.app"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = "25.2.9519653" // نسخه پایدار برای جلوگیری از خطای NDK
+    
+    // اصلاح شده: استفاده از بالاترین نسخه مورد نیاز پلاگین‌ها برای جلوگیری از کرش
+    ndkVersion = "28.2.13676358" 
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -31,10 +33,13 @@ android {
 
     defaultConfig {
         applicationId = "com.safipay.app"
-        minSdk = flutter.minSdkVersion
+        minSdk = flutter.minSdkVersion // حداقل نسخه برای پشتیبانی بهتر از پلاگین‌ها
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        
+        // اضافه کردن برای پایداری در رندرینگ
+        multiDexEnabled = true
     }
 
     signingConfigs {
@@ -50,8 +55,11 @@ android {
         release {
             // فعال کردن امضای رسمی SafiPay
             signingConfig = signingConfigs.getByName("release")
-            isMinifyEnabled = true
-            isShrinkResources = true
+            
+            // بهینه‌سازی کد (اگر اپلیکیشن کرش کرد، این دو را false کن)
+            isMinifyEnabled = false 
+            isShrinkResources = false
+            
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }

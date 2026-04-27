@@ -260,7 +260,7 @@ class _CardsPageState extends State<CardsPage> {
       contentPadding: EdgeInsets.zero,
       leading: Icon(icon, color: const Color(0xFFFFD700)),
       title: Text(title, style: const TextStyle(fontSize: 14)),
-      trailing: Switch(value: val, onChanged: (v) {}, activeColor: const Color(0xFFFFD700)),
+      trailing: Switch(value: val, onChanged: (v) {}, activeThumbColor: const Color(0xFFFFD700)),
     );
   }
 }

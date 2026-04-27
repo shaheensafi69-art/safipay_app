@@ -22,7 +22,7 @@ class _GalaxyDashboardState extends State<GalaxyDashboard> {
   String? avatarUrl;
   
   final TextEditingController _amountController = TextEditingController(text: "1");
-  double _exchangeRate = 0.92;
+  final double _exchangeRate = 0.92;
 
   final List<Map<String, dynamic>> currencies = [
     {'name': 'US Dollar', 'code': 'USD', 'symbol': '\$', 'flag': '🇺🇸', 'balance': 0.0},
@@ -340,7 +340,11 @@ class _GalaxyDashboardState extends State<GalaxyDashboard> {
           ),
         ),
         _buildExPicker(cur, (v) => setState(() {
-          if (label == "From") fromEx = v!; else toEx = v!;
+          if (label == "From") {
+            fromEx = v!;
+          } else {
+            toEx = v!;
+          }
         })),
       ],
     );

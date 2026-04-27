@@ -68,7 +68,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     shape: const CircleBorder(),
                     padding: const EdgeInsets.all(20),
                   ),
-                  child: Icon(Icons.chevron_right, color: Colors.black),
+                  child: const Icon(Icons.chevron_right, color: Colors.black),
                 ),
               ],
             ),
