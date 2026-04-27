@@ -32,7 +32,7 @@ android {
 
     defaultConfig {
         applicationId = "com.safipay.app"
-        minSdk = 21 // تغییر به 21 برای پشتیبانی بهتر از کتابخانه‌های جدید
+        minSdk = flutter.minSdkVersion // تغییر به 21 برای پشتیبانی بهتر از کتابخانه‌های جدید
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
